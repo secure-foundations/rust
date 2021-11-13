@@ -90,7 +90,7 @@ use unused::*;
 
 /// Useful for other parts of the compiler / Clippy.
 pub use builtin::SoftLints;
-pub use context::{CheckLintNameResult, EarlyContext, FormalVerifierRewrite, LateContext, LintContext, LintStore};
+pub use context::{CheckLintNameResult, EarlyContext, LateContext, LintContext, LintStore};
 pub use early::check_ast_crate;
 pub use late::check_crate;
 pub use passes::{EarlyLintPass, LateLintPass};
@@ -230,6 +230,15 @@ pub fn new_lint_store(no_interleave_lints: bool, internal_lints: bool) -> LintSt
     }
 
     lint_store
+}
+
+// formal verifier callback
+pub trait FormalVerifierRewrite {
+    fn rewrite_crate(
+        &mut self,
+        krate: &ast::Crate,
+        next_node_id: &mut dyn FnMut() -> rustc_ast::NodeId,
+    ) -> ast::Crate;
 }
 
 /// Tell the `LintStore` about all the built-in lints (the ones

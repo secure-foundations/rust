@@ -584,7 +584,6 @@ symbols! {
         from_trait,
         from_usize,
         fsub_fast,
-        fuel, // formal verifier symbol
         fundamental,
         future,
         future_trait,

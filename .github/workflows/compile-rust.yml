@@ -21,7 +21,7 @@ jobs:
       - name: build and install
         run: |  
           cp config.toml.verify config.toml
-	  ./x.py install -i
+          ./x.py install -i
           # to minimize the window of race between two CI (rust, verus), 
           # instead of just "cp -r install ~/local_bin", do below lines
           mv install install_tmp

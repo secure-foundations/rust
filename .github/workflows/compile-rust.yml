@@ -1,6 +1,12 @@
 name: rust-verification
 
-on: [push, workflow_dispatch]   # to turn on CI on pull_request, change this to ->  on: [push, pull_request]
+on:
+  push:
+
+  workflow_dispatch:
+
+  schedule:
+    - cron: '0 0 1,5,10,15,20,25 * *'
 
 jobs:
   build_and_save:

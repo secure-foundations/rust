@@ -1,6 +1,6 @@
 name: rust-verification
 
-on: [push]   # to turn on CI on pull_request, change this to ->  on: [push, pull_request]
+on: [push, workflow_dispatch]   # to turn on CI on pull_request, change this to ->  on: [push, pull_request]
 
 jobs:
   build_and_save:
